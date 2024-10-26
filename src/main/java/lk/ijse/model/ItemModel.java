@@ -2,6 +2,8 @@ package lk.ijse.model;
 
 import lk.ijse.db.DbConnection;
 import lk.ijse.dto.ItemDto;
+import lk.ijse.tm.CartTm;
+
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -118,6 +120,14 @@ public class ItemModel {
         return dto;
     }
 
+    public static boolean updateItem(List<CartTm> cartTmList){
+        for (CartTm tm : cartTmList){
+            if (!updateQty(tm.getItem_id(), tm.getItem_qty())){
+                return false;
+            }
+        }
+        return true;
+    }
 
 
 
