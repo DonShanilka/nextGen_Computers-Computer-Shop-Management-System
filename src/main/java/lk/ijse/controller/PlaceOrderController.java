@@ -9,13 +9,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.dto.CustomerDto;
 import lk.ijse.dto.ItemDto;
+import lk.ijse.dto.PlaceOrderDto;
 import lk.ijse.model.CustomerModel;
 import lk.ijse.model.ItemModel;
 import lk.ijse.model.OrderModel;
+import lk.ijse.model.PlaceOrderModel;
 import lk.ijse.tm.CartTm;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlaceOrderController {
@@ -229,6 +232,25 @@ public class PlaceOrderController {
     }
 
     public void placeOrderOnAction(ActionEvent actionEvent) {
+        String orderId = lblOrderId.getText();
+        String date = lblOrderDate.getText();
+        String cusId = lblCustomerId.getValue();
 
+        List<CartTm> cartTmList = new ArrayList<>();
+        for (int i = 0; i < tm_Cart.getItems().size(); i++) {
+            CartTm cartTm = tm_Cart.getItems().get(i);
+            cartTmList.add(cartTm);
+        }
+
+        PlaceOrderDto placeOrderDto = new PlaceOrderDto(orderId, date, cusId, cartTmList);
+
+        try {
+            boolean isPlaceOrder = PlaceOrderModel.placeOrder(placeOrderDto);
+            if (isPlaceOrder) {
+                new Alert(Alert.AlertType.INFORMATION, "Order Placed").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 }

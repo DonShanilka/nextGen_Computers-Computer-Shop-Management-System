@@ -21,4 +21,13 @@ public class PlaceOrderDto {
     private int qty;
     private double totalPrice;
     private List<CartTm> cartTmList = new ArrayList<>();
+
+    public PlaceOrderDto(String orderId, String date, String cusId, List<CartTm> cartTmList) {
+        this.orderId = orderId;
+        this.date = LocalDate.parse(date);
+        this.customerId = cusId;
+        this.qty = cartTmList.size();
+        this.totalPrice = cartTmList.stream().mapToDouble(CartTm::getTotal_price).sum();
+        this.cartTmList = cartTmList;
+    }
 }
