@@ -120,7 +120,7 @@ public class ItemModel {
         return dto;
     }
 
-    public static boolean updateItem(List<CartTm> cartTmList){
+    public static boolean updateItem(List<CartTm> cartTmList) throws SQLException {
         for (CartTm tm : cartTmList){
             if (!updateQty(tm.getItem_id(), tm.getItem_qty())){
                 return false;
@@ -129,6 +129,16 @@ public class ItemModel {
         return true;
     }
 
+    public static boolean updateQty(String code, int qty) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
 
+        String sql = "UPDATE item SET qty - ? WHERE id = ?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setInt(1,qty);
+        pstm.setString(2,code);
+
+        return pstm.executeUpdate() > 0;
+    }
 
 }
