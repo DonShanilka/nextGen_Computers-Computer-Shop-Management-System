@@ -26,9 +26,9 @@ public class OrderDetailsModel {
 
         pstm.setString(1,orderId);
         pstm.setString(2, tm.getItem_id());
-        pstm.setString(3, tm.getItem_qty());
-        pstm.setString(4, tm.getItem_price());
+        pstm.setInt(3, tm.getItem_qty());
+        pstm.setDouble(4, tm.getNew_price());
 
-        return pstm.executeUpdate();
+        return pstm.executeUpdate() > 0;
     }
 }
