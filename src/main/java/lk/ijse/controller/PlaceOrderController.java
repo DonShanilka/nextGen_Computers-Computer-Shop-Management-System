@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.dto.CustomerDto;
 import lk.ijse.dto.ItemDto;
 import lk.ijse.model.CustomerModel;
@@ -153,13 +154,6 @@ public class PlaceOrderController {
         lblOrderDate.setText(String.valueOf(LocalDate.now()));
     }
 
-    public void initialize(){
-        lodadCustomerId();
-        loadItemId();
-        genarateNextId();
-        setData();
-    }
-
     public void loadItemId(){
         ObservableList<String> obList = FXCollections.observableArrayList();
 
@@ -215,4 +209,22 @@ public class PlaceOrderController {
         }
 
     }
+
+    public void initialize(){
+        lodadCustomerId();
+        loadItemId();
+        genarateNextId();
+        setData();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory(){
+        tm_itemId.setCellValueFactory(new PropertyValueFactory<>("item_id"));
+        tm_ItemName.setCellValueFactory(new PropertyValueFactory<>("item_name"));
+        tm_ItemPrice.setCellValueFactory(new PropertyValueFactory<>("item_price"));
+        tm_itemQty.setCellValueFactory(new PropertyValueFactory<>("item_qty"));
+        tm_TotalPrice.setCellValueFactory(new PropertyValueFactory<>("total_price"));
+        tm_Discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
+    }
+
 }

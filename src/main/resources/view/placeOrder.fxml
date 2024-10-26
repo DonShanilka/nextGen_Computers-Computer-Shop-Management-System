@@ -46,5 +46,7 @@
       </TableView>
       <Label layoutX="13.0" layoutY="518.0" text="Discount :" />
       <TextField fx:id="txt_discount" layoutX="165.0" layoutY="514.0" />
+      <Label layoutX="370.0" layoutY="575.0" text="Total Price :" />
+      <Label fx:id="lbl_Net_Total" layoutX="460.0" layoutY="575.0" />
    </children>
 </AnchorPane>
