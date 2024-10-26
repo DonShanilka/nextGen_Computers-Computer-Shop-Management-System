@@ -20,6 +20,7 @@ import java.util.List;
 
 public class PlaceOrderController {
 
+    public Label lbl_Net_Total;
     @FXML
     private JFXComboBox<String> lblCustomerId;
 
@@ -96,8 +97,8 @@ public class PlaceOrderController {
                         int col_Qty = (int) tm_itemQty.getCellData(i);
                         qty += col_Qty;
                         total = unitPrice - discount * qty;
-                        obList.get(i).setItem_qty(String.valueOf(qty));
-                        obList.get(i).setTotal_price(String.valueOf(total));
+                        obList.get(i).setItem_qty(qty);
+                        obList.get(i).setTotal_price(total);
 
                         calulateTotal();
                         tm_Cart.refresh();
@@ -227,4 +228,7 @@ public class PlaceOrderController {
         tm_Discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
     }
 
+    public void placeOrderOnAction(ActionEvent actionEvent) {
+
+    }
 }

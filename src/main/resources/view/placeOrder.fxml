@@ -48,5 +48,6 @@
       <TextField fx:id="txt_discount" layoutX="165.0" layoutY="514.0" />
       <Label layoutX="370.0" layoutY="575.0" text="Total Price :" />
       <Label fx:id="lbl_Net_Total" layoutX="460.0" layoutY="575.0" />
+      <JFXButton layoutX="1012.0" layoutY="571.0" onAction="#placeOrderOnAction" style="-fx-background-color: green;" text="Place Order" />
    </children>
 </AnchorPane>
