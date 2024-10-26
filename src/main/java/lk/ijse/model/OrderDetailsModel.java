@@ -1,11 +1,15 @@
 package lk.ijse.model;
 
+import lk.ijse.db.DbConnection;
 import lk.ijse.tm.CartTm;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 public class OrderDetailsModel {
-    public static boolean saveOrderDetails(String orderId, List<CartTm> cartTmList){
+    public static boolean saveOrderDetails(String orderId, List<CartTm> cartTmList) throws SQLException {
         for (CartTm tm : cartTmList){
             if (!saveOrderDetails(orderId, tm)) {
                 return false;
@@ -14,5 +18,17 @@ public class OrderDetailsModel {
         return true;
     }
 
-    private static boolean save
+    private static boolean saveOrderDetails(String orderId, CartTm tm) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "INSERT INTO order_details VALUES(?,?,?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        pstm.setString(1,orderId);
+        pstm.setString(2, tm.getItem_id());
+        pstm.setString(3, tm.getItem_qty());
+        pstm.setString(4, tm.getItem_price());
+
+        return pstm.executeUpdate();
+    }
 }
