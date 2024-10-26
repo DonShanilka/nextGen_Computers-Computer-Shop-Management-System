@@ -138,12 +138,12 @@ public class PlaceOrderController {
             System.out.println("Last ID : " + lastId);
 
             if (lastId == null) {
-                orderId = "O-0001";
+                orderId = "O0001";
             } else {
                 String[] ar = lastId.split("[O]");
                 int digits = Integer.parseInt(ar[1]);
                 digits++;
-                String newId = String.format("%04d", digits);
+                String newId = String.format("O%04d", digits);
                 orderId =  newId;
             }
             System.out.println("Order ID : " + orderId);
