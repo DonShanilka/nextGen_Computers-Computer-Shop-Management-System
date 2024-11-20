@@ -1,15 +1,21 @@
 package lk.ijse.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import lk.ijse.dto.EmployeeDto;
 import lk.ijse.dto.SuppliyerDto;
+import lk.ijse.model.EmployeeModel;
 import lk.ijse.model.SuppliyerModel;
+import lk.ijse.tm.EmployeeTm;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class SuppliyerController {
 
@@ -151,5 +157,38 @@ public class SuppliyerController {
             throw new RuntimeException(e);
         }
     }
-
 }
+
+//public void loadAllEmployee(){
+//    var model = new EmployeeModel();
+//
+//    ObservableList<EmployeeTm> obList = FXCollections.observableArrayList();
+//
+//    try{
+//        List<EmployeeDto> dtoList = model.getAll();
+//
+//        for (EmployeeDto dto : dtoList){
+//            obList.add(new EmployeeTm(
+//                    dto.getNic(),
+//                    dto.getName(),
+//                    dto.getAddress(),
+//                    dto.getEmail(),
+//                    dto.getMobile(),
+//                    dto.getBDate(),
+//                    dto.getGender(),
+//                    dto.getNation(),
+//                    dto.getRelation(),
+//                    dto.getEId(),
+//                    dto.getRolle(),
+//                    dto.getJDate(),
+//                    dto.getDepart(),
+//                    dto.getPQ(),
+//                    dto.getExperiance(),
+//                    dto.getUni()
+//            ));
+//        }
+//        SuppliyerTm.setItems(obList);
+//    } catch (SQLException e) {
+//        throw new RuntimeException(e);
+//    }
+//}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1103.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.PlaceOrderController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#003bff" height="50.0" stroke="#003bff" strokeType="INSIDE" width="1103.0" />
+      <Label layoutX="14.0" layoutY="76.0" text="ORDER ID :" />
+      <Label fx:id="lblOrderId" layoutX="91.0" layoutY="76.0" />
+      <Label layoutX="874.0" layoutY="76.0" text="Date :" />
+      <Label layoutX="14.0" layoutY="122.0" text="Customer ID :" />
+      <JFXComboBox fx:id="lblItemId" layoutX="171.0" layoutY="226.0" onAction="#cmbItemOnAction" prefHeight="25.0" prefWidth="144.0" />
+      <Label layoutX="14.0" layoutY="179.0" text="Customer Name :" />
+      <Label layoutX="14.0" layoutY="230.0" text="Item ID :" />
+      <Label layoutX="11.0" layoutY="282.0" text="Item Name :" />
+      <Label layoutX="11.0" layoutY="342.0" text="Item Price :" />
+      <Label layoutX="11.0" layoutY="446.0" text="Qty" />
+      <Label layoutX="14.0" layoutY="575.0" text="Total Price :" />
+      <JFXButton layoutX="15.0" layoutY="636.0" onAction="#clearOnAction" style="-fx-background-color: yellow;" text="Clear" />
+      <JFXButton layoutX="70.0" layoutY="636.0" onAction="#addToCartOnAction" style="-fx-background-color: blue;" text="add to cart" textFill="WHITE" />
+      <Label fx:id="lbl_customer_name" layoutX="168.0" layoutY="179.0" />
+      <Label fx:id="lbl_item_name" layoutX="168.0" layoutY="282.0" />
+      <Label fx:id="lbl_item_price" layoutX="154.0" layoutY="342.0" />
+      <TextField fx:id="txt_qty" layoutX="165.0" layoutY="442.0" />
+      <Label fx:id="lbl_total_price" layoutX="166.0" layoutY="575.0" prefHeight="17.0" prefWidth="0.0" />
+      <Label fx:id="lblOrderDate" layoutX="926.0" layoutY="76.0" />
+      <JFXComboBox fx:id="lblCustomerId" layoutX="171.0" layoutY="118.0" onAction="#cmbCustomerOnAction" prefHeight="25.0" prefWidth="144.0" />
+      <Label layoutX="11.0" layoutY="396.0" text="Qty On Hand :" />
+      <Label fx:id="lbl_Qty_On_hand" layoutX="171.0" layoutY="396.0" />
+      <TableView fx:id="tm_Cart" layoutX="370.0" layoutY="151.0" prefHeight="400.0" prefWidth="720.0">
+        <columns>
+          <TableColumn fx:id="tm_itemId" prefWidth="101.0" text="Item ID" />
+          <TableColumn fx:id="tm_ItemName" prefWidth="159.0" text="Item Name" />
+            <TableColumn fx:id="tm_ItemPrice" prefWidth="137.0" text="Item Price" />
+            <TableColumn fx:id="tm_itemQty" prefWidth="64.0" text="Qty" />
+            <TableColumn fx:id="tm_TotalPrice" prefWidth="164.0" text="Total Price" />
+            <TableColumn fx:id="tm_Discount" prefWidth="94.0" text="Discount" />
+        </columns>
+      </TableView>
+      <Label layoutX="13.0" layoutY="518.0" text="Discount :" />
+      <TextField fx:id="txt_discount" layoutX="165.0" layoutY="514.0" />
+      <Label layoutX="370.0" layoutY="575.0" text="Total Price :" />
+      <Label fx:id="lbl_Net_Total" layoutX="460.0" layoutY="575.0" />
+      <JFXButton layoutX="1012.0" layoutY="571.0" onAction="#placeOrderOnAction" style="-fx-background-color: green;" text="Place Order" />
+   </children>
+</AnchorPane>

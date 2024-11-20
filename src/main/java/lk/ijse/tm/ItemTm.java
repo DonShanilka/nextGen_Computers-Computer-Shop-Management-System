@@ -2,6 +2,7 @@ package lk.ijse.tm;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class ItemTm {
     private double price;
     private String spec;
     private String supid;
-    private Date date;
+    private LocalDate date;
     private int qty;
     private String type;
 

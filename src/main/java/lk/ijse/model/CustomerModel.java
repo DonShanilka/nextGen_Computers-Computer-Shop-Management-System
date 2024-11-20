@@ -89,4 +89,32 @@ public class CustomerModel {
         return customerDtoList;
     }
 
+    public static CustomerDto searchCustomer(String nic) throws SQLException {
+        Connection connection = DbConnection.getInstance().getConnection();
+
+        String sql = "SELECT * FROM customer WHERE nic=?";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,nic);
+
+        ResultSet resultSet = pstm.executeQuery();
+
+        CustomerDto dto = null;
+
+        if (resultSet.next()){
+            String c_nic = resultSet.getString(1);
+            String c_name = resultSet.getString(2);
+            String c_address = resultSet.getString(3);
+            String c_mobile = resultSet.getString(4);
+            String c_date = resultSet.getString(5);
+            String c_paymentMethod = resultSet.getString(6);
+            String c_paymentType = resultSet.getString(7);
+            String c_amount = resultSet.getString(8);
+            String c_item_cat = resultSet.getString(9);
+            String c_product_name = resultSet.getString(10);
+
+            dto = new CustomerDto(c_nic, c_name, c_address, c_mobile, c_date, c_paymentMethod, c_paymentType, c_amount, c_item_cat, c_product_name);
+        }
+        return dto;
+    }
+
 }
