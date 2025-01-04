@@ -99,6 +99,7 @@ public class ItemController implements Initializable {
 
             if (isDelete) {
                 new Alert(Alert.AlertType.CONFIRMATION,"Item is Delete");
+                clearFields();
                 loadAllItem();
             } else {
                 new Alert(Alert.AlertType.ERROR,"Item is Not Delete");
@@ -122,18 +123,19 @@ public class ItemController implements Initializable {
         String year = txtItemYear.getText();
         double price = Double.parseDouble(txtItemPrice.getText());
         String spec = txtItemSpec.getText();
-        String supId = String.valueOf(txtItemSuppliyerID.getValue());
+//        String supId = String.valueOf(txtItemSuppliyerID.getValue());
         LocalDate date = txtItemBuyDate.getValue();
         int qty = Integer.parseInt(txtItemQty.getText());
-        String type = (String) txtItemType.getValue();
+//        String type = (String) txtItemType.getValue();
 
-        var dto = new ItemDto(id,brand,model,year,price,spec,supId,date,qty,type);
+        var dto = new ItemDto(id,brand,model,year,price,spec,date,qty);
 
         try {
             boolean isUpdate = ItemModel.accUpdate(dto);
 
             if (isUpdate) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item is Update");
+                clearFields();
                 loadAllItem();
             } else {
                 new Alert(Alert.AlertType.ERROR,"Item is Not Update");
@@ -153,18 +155,17 @@ public class ItemController implements Initializable {
         String year = txtItemYear.getText();
         double price = Double.parseDouble(txtItemPrice.getText());
         String spec = txtItemSpec.getText();
-        String supId = String.valueOf(txtItemSuppliyerID.getValue());
         LocalDate date = txtItemBuyDate.getValue();
         int qty = Integer.parseInt(txtItemQty.getText());
-        String type = (String) txtItemType.getValue();
 
-        var dto = new ItemDto(id,brand,model,year,price,spec,supId,date,qty,type);
+        var dto = new ItemDto(id,brand,model,year,price,spec,date,qty);
 
         try {
             boolean isSave = ItemModel.saveItem(dto);
 
             if (isSave) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item is Save").show();
+                clearFields();
                 loadAllItem();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Item is Not Save");
@@ -191,10 +192,8 @@ public class ItemController implements Initializable {
                         dto.getYear(),
                         dto.getPrice(),
                         dto.getSpec(),
-                        dto.getSupid(),
                         dto.getDate(),
-                        dto.getQty(),
-                        dto.getType()
+                        dto.getQty()
                 ));
             }
             Gputm.setItems(obList);
@@ -203,6 +202,20 @@ public class ItemController implements Initializable {
         }
     }
 
+    public void clearFields() {
+        txtItemBrand.setText("");
+        txtItemBuyDate.setValue(null); // Clears DatePicker
+        txtItemId.setText("");
+        txtItemModel.setText("");
+        txtItemPrice.setText("");
+        txtItemQty.setText("");
+        txtItemSpec.setText(""); // Clears TextArea
+        txtItemSuppliyerID.setValue(null); // Clears ComboBox
+        txtItemType.setValue(null); // Clears ComboBox
+        txtItemYear.setText("");
+    }
+
+
     private void setCellValueFactory(){
         tmGpuId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tmGpuBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
@@ -210,15 +223,14 @@ public class ItemController implements Initializable {
         tmGpuYear.setCellValueFactory(new PropertyValueFactory<>("year"));
         tmGpuPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         tmGpuSpec.setCellValueFactory(new PropertyValueFactory<>("spec"));
-        tmGpuSupId.setCellValueFactory(new PropertyValueFactory<>("supid"));
         tmGpuDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         tmGpuQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        tmGpuType.setCellValueFactory(new PropertyValueFactory<>("type"));
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAllItem();
         setCellValueFactory();
+        clearFields();
     }
 }

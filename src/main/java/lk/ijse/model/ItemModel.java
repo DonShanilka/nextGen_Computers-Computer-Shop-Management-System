@@ -14,7 +14,7 @@ public class ItemModel {
     public static boolean saveItem(ItemDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "INSERT INTO item VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO item VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getId());
@@ -23,10 +23,8 @@ public class ItemModel {
         pstm.setString(4,dto.getYear());
         pstm.setDouble(5,dto.getPrice());
         pstm.setString(6,dto.getSpec());
-        pstm.setString(7,dto.getSupid());
-        pstm.setDate(8, Date.valueOf(dto.getDate()));
-        pstm.setInt(9,dto.getQty());
-        pstm.setString(10,dto.getType());
+        pstm.setDate(7, Date.valueOf(dto.getDate()));
+        pstm.setInt(8,dto.getQty());
 
         return pstm.executeUpdate() > 0;
     }
@@ -46,7 +44,7 @@ public class ItemModel {
     public static boolean accUpdate(ItemDto dto) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
 
-        String sql = "UPDATE item SET brand=?, modelno=?, year=?, price=?, spec=?, supid=?, date=?, qty=?, type=? WHERE id=?";
+        String sql = "UPDATE item SET brand=?, modelno=?, year=?, price=?, spec=?, date=?, qty=? WHERE id=?";
         PreparedStatement pstm = connection.prepareStatement(sql);
 
         pstm.setString(1,dto.getBrand());
@@ -54,11 +52,9 @@ public class ItemModel {
         pstm.setString(3,dto.getYear());
         pstm.setDouble(4,dto.getPrice());
         pstm.setString(5,dto.getSpec());
-        pstm.setString(6,dto.getSupid());
-        pstm.setDate(7, Date.valueOf(dto.getDate()));
-        pstm.setInt(8,dto.getQty());
-        pstm.setString(9,dto.getType());
-        pstm.setString(10,dto.getId());
+        pstm.setDate(6, Date.valueOf(dto.getDate()));
+        pstm.setInt(7,dto.getQty());
+        pstm.setString(8,dto.getId());
 
         return pstm.executeUpdate()>0;
     }
@@ -81,10 +77,8 @@ public class ItemModel {
                     resultSet.getString(4),
                     resultSet.getDouble(5),
                     resultSet.getString(6),
-                    resultSet.getString(7),
-                    resultSet.getDate(8).toLocalDate(),
-                    resultSet.getInt(9),
-                    resultSet.getString(10)
+                    resultSet.getDate(7).toLocalDate(),
+                    resultSet.getInt(8)
 
             ));
         }
@@ -110,12 +104,10 @@ public class ItemModel {
             String year = resultSet.getString(4);
             double price = resultSet.getDouble(5);
             String spec = resultSet.getString(6);
-            String supid = resultSet.getString(7);
-            LocalDate date = resultSet.getDate(8).toLocalDate();
-            int qty = resultSet.getInt(9);
-            String type = resultSet.getString(10);
+            LocalDate date = resultSet.getDate(7).toLocalDate();
+            int qty = resultSet.getInt(8);
 
-            dto = new ItemDto(id, brand, modelno, year, price, spec, supid, date, qty, type);
+            dto = new ItemDto(id, brand, modelno, year, price, spec, date, qty);
         }
         return dto;
     }

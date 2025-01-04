@@ -41,5 +41,4 @@ public class PlaceOrderModel {
         }
         return true;
     }
-
 }

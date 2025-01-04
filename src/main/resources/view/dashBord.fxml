@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1350.0" style="-fx-background-color: #ebebff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashBordController">
+<AnchorPane prefHeight="760.0" prefWidth="1350.0" style="-fx-background-color: #ebebff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.DashBordController">
    <children>
       <Pane layoutY="52.0" prefHeight="708.0" prefWidth="248.0" style="-fx-background-color: #000036;">
          <children>
@@ -40,6 +40,16 @@
                </font>
             </JFXButton>
             <JFXButton alignment="BOTTOM_LEFT" layoutY="154.0" onAction="#itemOnAction" prefHeight="36.0" prefWidth="248.0" text="Item" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" layoutY="226.0" onAction="#placeOderOnAction" prefHeight="36.0" prefWidth="248.0" text="Place Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BOTTOM_LEFT" layoutY="190.0" onAction="#suppliyerOnAction" prefHeight="36.0" prefWidth="248.0" text="Suppliyer" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

@@ -18,9 +18,7 @@ public class ItemTm {
     private String year;
     private double price;
     private String spec;
-    private String supid;
     private LocalDate date;
     private int qty;
-    private String type;
 
 }

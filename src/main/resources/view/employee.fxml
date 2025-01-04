@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="760.0" prefWidth="1103.0" style="-fx-background-color: #dbd9ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeController">
+<AnchorPane prefHeight="760.0" prefWidth="1103.0" style="-fx-background-color: #dbd9ff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.controller.EmployeeController">
    <children>
       <Pane layoutX="-1.0" layoutY="52.0" prefHeight="708.0" prefWidth="1109.0" style="-fx-background-color: fff;">
          <children>
@@ -105,7 +105,6 @@
             <TextField fx:id="txtAddress" layoutX="117.0" layoutY="233.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
             <TextField fx:id="txtEmail" layoutX="117.0" layoutY="283.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
             <TextField fx:id="txtMobile" layoutX="117.0" layoutY="330.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
-            <TextField fx:id="txtBdaY" layoutX="117.0" layoutY="378.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
             <TextField fx:id="txtName" layoutX="117.0" layoutY="188.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
             <TextField fx:id="txtNation" layoutX="391.0" layoutY="186.0" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: fff;" />
             <ComboBox fx:id="txtGebder" layoutX="391.0" layoutY="135.0" prefHeight="25.0" prefWidth="174.0" />
@@ -234,6 +233,7 @@
             <ComboBox fx:id="txtDepartment" layoutX="916.0" layoutY="186.0" prefHeight="25.0" prefWidth="174.0" />
             <TextField fx:id="txteId" layoutX="656.0" layoutY="126.0" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: fff;" />
             <TextField fx:id="txtRolle" layoutX="656.0" layoutY="180.0" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: fff;" />
+            <DatePicker fx:id="txtBdaY" layoutX="117.0" layoutY="376.0" />
          </children>
       </Pane>
       <Pane layoutX="-1.0" prefHeight="54.0" prefWidth="1109.0" style="-fx-background-color: #00002e;">

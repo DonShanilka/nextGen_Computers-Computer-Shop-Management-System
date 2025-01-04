@@ -13,6 +13,7 @@ import lk.ijse.tm.EmployeeTm;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -56,7 +57,7 @@ public class EmployeeController implements Initializable {
     @FXML
     private TextField txtAddress;
     @FXML
-    private TextField txtBdaY;
+    private DatePicker txtBdaY;
     @FXML
     private ComboBox<String > txtDepartment;
     @FXML
@@ -97,7 +98,7 @@ public class EmployeeController implements Initializable {
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
-        String bDate = txtBdaY.getText();
+        String bDate = String.valueOf(txtBdaY.getValue());
         String gender = txtGebder.getValue();
         String nation = txtNation.getText();
         String relation = txtRelation.getValue();
@@ -134,7 +135,7 @@ public class EmployeeController implements Initializable {
         String address = txtAddress.getText();
         String email = txtEmail.getText();
         String mobile = txtMobile.getText();
-        String bDate = txtBdaY.getText();
+        String bDate = String.valueOf(txtBdaY.getValue());
         String gender = txtGebder.getValue();
         String nation = txtNation.getText();
         String relation = txtRelation.getValue();
@@ -267,7 +268,7 @@ public class EmployeeController implements Initializable {
         txtAddress.setText(row.getAddress());
         txtEmail.setText(row.getEmail());
         txtMobile.setText(row.getMobile());
-        txtBdaY.setText(row.getBDate());
+        txtBdaY.setUserData(row.getBDate());
         txtGebder.setValue(row.getGender());
         txtNation.setText(row.getNation());
         txtRelation.setValue(row.getRelation());
@@ -287,7 +288,7 @@ public class EmployeeController implements Initializable {
         txtAddress.setText("");
         txtEmail.setText("");
         txtMobile.setText("");
-        txtBdaY.setText("");
+        txtBdaY.setUserData("");
         txtGebder.setValue("");
         txtNation.setText("");
         txtRelation.setValue("");
@@ -298,12 +299,10 @@ public class EmployeeController implements Initializable {
         txtPQ.setText("");
         txtExpe.setText("");
         txtUni.setText("");
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         clearfield();
         tableListener();
         txtGebder.getItems().addAll(gen);

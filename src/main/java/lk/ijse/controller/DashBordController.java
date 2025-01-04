@@ -17,15 +17,17 @@ public class DashBordController {
     public JFXButton employee;
     public JFXButton home;
     public JFXButton item;
+    public JFXButton supplier;
+    public JFXButton order;
 
     public void initialize() throws IOException {
         //homeOnAction(null);
     }
 
     void setForm(String form) throws IOException {
-        String[] formArray = {"/view/customer.fxml", "/view/employee.fxml", "/view/income.fxml", "/view/item.fxml"};
+        String[] formArray = {"/view/customer.fxml", "/view/employee.fxml", "/view/income.fxml", "/view/item.fxml", "/view/suppliyer.fxml", "/view/placeOrder.fxml"};
 
-        JFXButton[] btnArray = {customer,employee,home,item};
+        JFXButton[] btnArray = {customer,employee,home,item, supplier,order};
         AnchorPane load = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(form)));
         root1.getChildren().clear();
         root1.getChildren().add(load);
@@ -56,5 +58,15 @@ public class DashBordController {
     @FXML
     void itemOnAction(ActionEvent event) throws IOException {
         setForm("/view/item.fxml");
+    }
+
+    @FXML
+    void suppliyerOnAction(ActionEvent actionEvent) throws IOException {
+        setForm("/view/suppliyer.fxml");
+    }
+
+    @FXML
+    void placeOderOnAction(ActionEvent actionEvent) throws IOException {
+        setForm("/view/placeOrder.fxml");
     }
 }
