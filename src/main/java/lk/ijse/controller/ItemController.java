@@ -210,8 +210,7 @@ public class ItemController implements Initializable {
         txtItemPrice.setText("");
         txtItemQty.setText("");
         txtItemSpec.setText(""); // Clears TextArea
-        txtItemSuppliyerID.setValue(null); // Clears ComboBox
-        txtItemType.setValue(null); // Clears ComboBox
+//        txtItemType.setValue(null); // Clears ComboBox
         txtItemYear.setText("");
     }
 
