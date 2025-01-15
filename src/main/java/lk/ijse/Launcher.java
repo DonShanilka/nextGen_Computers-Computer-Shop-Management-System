@@ -15,7 +15,7 @@ public class Launcher extends Application {
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dashBord.fxml"))));
         stage.centerOnScreen();
         stage.setTitle("DashBoard");
-
+        System.out.println("Hellow");
         stage.show();
     }
 }
