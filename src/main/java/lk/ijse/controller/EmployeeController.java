@@ -279,7 +279,6 @@ public class EmployeeController implements Initializable {
         txtPQ.setText(row.getPQ());
         txtExpe.setText(row.getExperiance());
         txtUni.setText(row.getUni());
-
     }
 
     public void clearfield(){

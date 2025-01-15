@@ -214,7 +214,6 @@ public class ItemController implements Initializable {
         txtItemYear.setText("");
     }
 
-
     private void setCellValueFactory(){
         tmGpuId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tmGpuBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
@@ -226,10 +225,33 @@ public class ItemController implements Initializable {
         tmGpuQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
     }
 
+    private void tableListener() {
+        Gputm.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                setData(newValue);
+            }
+        });
+    }
+
+
+    public void setData(ItemTm row) {
+        txtItemId.setText(row.getId());
+        txtItemBrand.setText(row.getBrand());
+        txtItemModel.setText(row.getModelno());
+        txtItemPrice.setText(String.valueOf(row.getPrice()));
+        txtItemQty.setText(String.valueOf(row.getQty()));
+        txtItemSpec.setText(row.getSpec());
+//        txtItemType.setValue(row.getType());
+        txtItemYear.setText(String.valueOf(row.getYear()));
+//        txtItemBuyDate.setValue(row.getPurchaseDate()); // Assuming purchaseDate is a LocalDate
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadAllItem();
         setCellValueFactory();
         clearFields();
+        tableListener();
     }
 }
